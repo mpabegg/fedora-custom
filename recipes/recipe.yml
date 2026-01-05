@@ -21,10 +21,14 @@ modules:
     repos:
       copr:
         - atim/starship
+        - alternateved/keyd
     install:
       packages:
         - micro
         - starship
+        - keyd
+        - 1password
+        - 1password-cli
   
   - type: default-flatpaks
     configurations:
@@ -35,17 +39,15 @@ modules:
         install:
           - com.brave.Browser
           - app.zen_browser.zen
-
-          # Gaming core
           - com.valvesoftware.Steam
-
-          # Proton management
           - com.vysp3r.ProtonPlus
-
-          # Media
           - org.videolan.VLC
-  
-          # Flatpak permissions
           - com.github.tchx84.Flatseal
+
+  - type: systemd
+    system:
+      enabled:
+        - keyd.service
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
       
