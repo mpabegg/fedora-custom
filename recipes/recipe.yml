@@ -38,6 +38,6 @@ modules:
 
           # Gaming core
           - com.valvesoftware.Steam
-          - com.valvesoftware.Steam.Utility.steam-runtime-tools
-      
+ 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+      
