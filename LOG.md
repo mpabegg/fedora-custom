@@ -355,6 +355,44 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `FEATURES.md`
 
+## 2026-01-06: Reduce Scroll skel config to delta
+
+- Context: Keep only a small user-level delta and avoid duplicating the full default config in skel.
+- Actions:
+  - Moved the full Scroll config into `/etc/scroll/config`.
+  - Replaced the skel config with a minimal include of the system config.
+- Files changed:
+  - `files/system/etc/scroll/config`
+  - `files/system/etc/skel/.config/scroll/config`
+
+## 2026-01-06: Keep full Scroll config in skel
+
+- Context: Confirm Scroll uses a full user config (like Sway) and revert the delta-only attempt.
+- Actions:
+  - Restored the full Scroll config in `files/system/etc/skel/.config/scroll/config`.
+  - Removed the temporary system-level config in `files/system/etc/scroll/config`.
+- Files changed:
+  - `files/system/etc/skel/.config/scroll/config`
+  - `files/system/etc/scroll/config`
+
+## 2026-01-06: Switch Scroll terminal to Ghostty
+
+- Context: Use a packaged terminal (Ghostty) and set it as the Scroll default.
+- Actions:
+  - Added the `scottames/ghostty` COPR and installed `ghostty`.
+  - Updated the Scroll config to use `ghostty` as `$term`.
+- Files changed:
+  - `recipes/modules.yml`
+  - `files/system/etc/skel/.config/scroll/config`
+
+## 2026-01-06: Refresh README for Ghostty and dual-base variants
+
+- Context: Keep the README aligned with current packages and build variants.
+- Actions:
+  - Documented both KDE (kinoite-main) and GNOME (silverblue-main) bases.
+  - Noted Ghostty as the default Scroll terminal.
+- Files changed:
+  - `README.md`
 ---
 
 ## Open items / next checks

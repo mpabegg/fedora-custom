@@ -13,11 +13,13 @@ modules:
       copr:
         - atim/starship
         - alternateved/keyd
+        - scottames/ghostty
     install:
       packages:
         - micro
         - starship
         - keyd
+        - ghostty
         - 1password
         - 1password-cli
         - distrobox

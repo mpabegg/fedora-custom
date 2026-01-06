@@ -17,7 +17,7 @@ Inspired by the uBlue ecosystem, especially Bazzite and WayBlue.
 ## What is included
 
 Base
-- Fedora KDE Atomic (`kinoite-main`).
+- Fedora KDE Atomic (`kinoite-main`) and Fedora Silverblue (`silverblue-main`).
 - Manual rpm-ostree rebase/rollback supported.
 
 Host packages (RPM)
@@ -26,6 +26,7 @@ Host packages (RPM)
 - `distrobox`
 - `pavucontrol`, `qpwgraph` (audio routing tools)
 - `steam-devices` (game device udev rules)
+- `ghostty` (default Scroll terminal)
 
 Homebrew
 - Preinstalled via `ghcr.io/ublue-os/brew` with setup timers.
@@ -120,6 +121,7 @@ This image ships a Scroll config in `/etc/skel` that:
 - Remaps movement to vim keys (`h/j/k/l`).
 - Switches the Scroll modifier to `Alt`.
 - Maps `Alt+Space` to the DMS launcher.
+- Sets the default terminal to `ghostty`.
 - Starts DMS and the clipboard watcher on login.
 - Binds DMS IPC shortcuts and hides Scroll's bar.
 See `SCROLL_KEYMAPS.md` for the ScrollWM keybindings and `SCROLL_WORKFLOW.md` for a quick workflow guide.
