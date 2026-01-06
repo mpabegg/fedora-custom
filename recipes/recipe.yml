@@ -26,7 +26,7 @@ modules:
       copr:
         - atim/starship
         - alternateved/keyd
-        - atar-axis/xpadneo
+        - atim/xpadneo
     install:
       packages:
         - micro

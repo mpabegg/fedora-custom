@@ -72,7 +72,7 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 
 - Context: Add minimal, Bazzite-aligned Bluetooth support without tuning.
 - Actions:
-  - Added `atar-axis/xpadneo` COPR.
+  - Added `atim/xpadneo` COPR (Fedora 43 builds available).
   - Added `xpadneo` package.
 - Files changed:
   - `recipes/recipe.yml`
