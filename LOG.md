@@ -68,6 +68,15 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `recipes/recipe.yml`
   - `files/system/etc/distrobox/distrobox.ini`
 
+## 2026-01-06: Xbox controller support (Bluetooth only)
+
+- Context: Add minimal, Bazzite-aligned Bluetooth support without tuning.
+- Actions:
+  - Added `atar-axis/xpadneo` COPR.
+  - Added `xpadneo` package.
+- Files changed:
+  - `recipes/recipe.yml`
+
 ---
 
 ## Open items / next checks

@@ -26,6 +26,7 @@ modules:
       copr:
         - atim/starship
         - alternateved/keyd
+        - atar-axis/xpadneo
     install:
       packages:
         - micro
@@ -34,6 +35,7 @@ modules:
         - 1password
         - 1password-cli
         - distrobox
+        - xpadneo
   
   - type: default-flatpaks
     configurations:
