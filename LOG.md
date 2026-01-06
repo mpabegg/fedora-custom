@@ -225,6 +225,37 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `README.md`
   - `LOG.md`
 
+## 2026-01-06: Align Scroll + DMS config with DMS compositor guidance
+
+- Context: Match DMS recommendations for wlroots-based compositors.
+- Actions:
+  - Start `wl-paste --watch cliphist store` from the Scroll+DMS config.
+  - Added DMS IPC keybindings for launcher, clipboard, process list, and settings.
+  - Routed audio/brightness media keys through DMS IPC.
+  - Set `QT_QPA_PLATFORM=wayland` in the Scroll+DMS session wrapper.
+  - Updated README and keymap cheatsheet.
+- Files changed:
+  - `files/system/etc/scroll/scroll-dms.conf`
+  - `files/system/usr/bin/scroll-dms-session`
+  - `SCROLL_KEYMAPS.md`
+  - `README.md`
+  - `LOG.md`
+
+## 2026-01-06: Fix Scroll keybind conflicts with Alt modifier
+
+- Context: Scroll reported config warnings due to Alt-based overlaps.
+- Actions:
+  - Introduced `$super` (`Mod4`) for secondary combos instead of `Alt`.
+  - Updated Scroll+DMS config and skel config to use `$super` for nomode/jump/fullscreen/selection bindings.
+  - Adjusted modifier mode to use arrow keys explicitly.
+  - Moved `bar mode invisible` inside the Scroll+DMS bar block.
+  - Updated keymap cheatsheet to match new bindings.
+- Files changed:
+  - `files/system/etc/skel/.config/scroll/config`
+  - `files/system/etc/scroll/scroll-dms.conf`
+  - `SCROLL_KEYMAPS.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.

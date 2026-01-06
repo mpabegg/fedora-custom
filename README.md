@@ -116,7 +116,7 @@ Included components (lean but full-featured):
 
 This image ships a Scroll config in `/etc/skel` that remaps movement to vim keys (`h/j/k/l`).
 It also switches the Scroll modifier to `Alt` and maps `Alt+Space` to the DMS launcher.
-The Scroll + DMS session uses `/etc/scroll/scroll-dms.conf` to start DMS and hide Scroll's bar.
+The Scroll + DMS session uses `/etc/scroll/scroll-dms.conf` to start DMS, enable clipboard history, bind DMS IPC shortcuts, and hide Scroll's bar.
 See `SCROLL_KEYMAPS.md` for the ScrollWM keybindings.
 
 ## VM validation checklist

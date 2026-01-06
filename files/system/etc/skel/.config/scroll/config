@@ -12,6 +12,8 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod1
+# Secondary modifier (Super/Windows key).
+set $super Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -166,12 +168,12 @@ animations {
     bindsym $mod+Ctrl+home move beginning
     bindsym $mod+Ctrl+end move end
     # nomode
-    bindsym $mod+Alt+$left move left nomode
-    bindsym $mod+Alt+$down move down nomode
-    bindsym $mod+Alt+$up move up nomode
-    bindsym $mod+Alt+$right move right nomode
-    bindsym $mod+Alt+home move beginning nomode
-    bindsym $mod+Alt+end move end nomode
+    bindsym $mod+$super+$left move left nomode
+    bindsym $mod+$super+$down move down nomode
+    bindsym $mod+$super+$up move up nomode
+    bindsym $mod+$super+$right move right nomode
+    bindsym $mod+$super+home move beginning nomode
+    bindsym $mod+$super+end move end nomode
 
     # Focus other monitors
     bindsym $mod+Shift+$left focus output left
@@ -277,7 +279,7 @@ bindsym $mod+Shift+backslash mode "wssplit"
     bindsym --no-repeat $mod+slash jump
     bindsym --no-repeat $mod+Shift+slash jump container
     bindsym --no-repeat $mod+Ctrl+slash jump workspaces
-    bindsym --no-repeat $mod+Alt+slash jump floating
+    bindsym --no-repeat $mod+$super+slash jump floating
 
     # Content
     bindsym $mod+comma scale_content incr -0.05
@@ -292,8 +294,8 @@ bindsym $mod+Shift+backslash mode "wssplit"
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     bindsym $mod+Ctrl+f fullscreen layout
-    bindsym $mod+Alt+f fullscreen application
-    bindsym $mod+Ctrl+Alt+f fullscreen global
+    bindsym $mod+$super+f fullscreen application
+    bindsym $mod+Ctrl+$super+f fullscreen global
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+y focus mode_toggle
@@ -314,7 +316,7 @@ bindsym $mod+Shift+backslash mode "wssplit"
     bindsym --no-repeat $mod+Ctrl+Insert selection reset
     bindsym --no-repeat $mod+Shift+Insert selection move
     bindsym --no-repeat $mod+Ctrl+Shift+Insert selection workspace
-    bindsym --no-repeat $mod+Alt+Insert selection to_trail
+    bindsym --no-repeat $mod+$super+Insert selection to_trail
 
     # Marks
     # bindsym $mod+m exec scroll-mark-toggle.sh
@@ -333,7 +335,7 @@ bindsym $mod+Shift+backslash mode "wssplit"
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+z scratchpad show
-    bindsym --no-repeat $mod+Alt+z scratchpad jump
+    bindsym --no-repeat $mod+$super+z scratchpad jump
 
     bindsym $mod+Ctrl+z workspace back_and_forth
 
@@ -341,12 +343,12 @@ bindsym $mod+Shift+backslash mode "wssplit"
 # Mode modifiers
 #
 mode "modifiers" {
-    bindsym $right set_mode after; mode default 
-    bindsym $left set_mode before; mode default 
+    bindsym Right set_mode after; mode default 
+    bindsym Left set_mode before; mode default 
     bindsym home set_mode beginning; mode default 
     bindsym end set_mode end; mode default 
-    bindsym $up set_mode focus; mode default 
-    bindsym $down set_mode nofocus; mode default 
+    bindsym Up set_mode focus; mode default 
+    bindsym Down set_mode nofocus; mode default 
     bindsym h set_mode center_horiz; mode default 
     bindsym Shift+h set_mode nocenter_horiz; mode default 
     bindsym v set_mode center_vert; mode default 

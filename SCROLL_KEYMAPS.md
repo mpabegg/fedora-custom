@@ -14,6 +14,7 @@ These bindings mirror the upstream Scroll default config (`config.in`).
 - `Mod+z` cycles scratchpad; `Mod+Shift+z` sends a window there.
 - `Mod+Tab` shows overview; `Mod+/` starts jump navigation.
 - `Mod+Shift+c` reloads config; `Mod+Shift+x` exits the session.
+- `Mod+v` opens clipboard history; `Mod+m` toggles process list; `Mod+,` toggles settings.
 
 This image remaps movement keys from arrows to vim-style `h/j/k/l`:
 - `Left -> h`
@@ -23,6 +24,7 @@ This image remaps movement keys from arrows to vim-style `h/j/k/l`:
 
 Variables used in the defaults:
 - `Mod` is `Mod1` (Alt).
+- `$super` is `Mod4` (Super/Windows key).
 - `$left/$down/$up/$right` are the arrow keys (remapped to `h/j/k/l` in this image).
 - `$term` is `konsole`.
 - `$menu` is `dms ipc call spotlight toggle`.
@@ -39,6 +41,9 @@ Mouse modifier:
 - `Mod+Shift+Backspace`: kill unfocused window.
 - `Mod+Ctrl+Backspace`: kill all windows.
 - `Mod+Space`: launcher (`$menu`).
+- `Mod+v`: DMS clipboard toggle.
+- `Mod+m`: DMS process list toggle.
+- `Mod+,`: DMS settings toggle.
 - `Mod+e`: file manager (`$filemanager`).
 - `Mod+Shift+c`: reload config.
 - `Mod+Shift+x`: exit Scroll with confirmation.
@@ -51,8 +56,8 @@ Mouse modifier:
 - `Mod+Home/End`: focus beginning/end.
 - `Mod+Ctrl+Left/Down/Up/Right`: move left/down/up/right.
 - `Mod+Ctrl+Home/End`: move beginning/end.
-- `Mod+Alt+Left/Down/Up/Right`: move left/down/up/right (nomode).
-- `Mod+Alt+Home/End`: move beginning/end (nomode).
+- `Mod+Super+Left/Down/Up/Right`: move left/down/up/right (nomode).
+- `Mod+Super+Home/End`: move beginning/end (nomode).
 - `Mod+Shift+Left/Down/Up/Right`: focus output left/down/up/right.
 
 ## Workspaces
@@ -92,7 +97,7 @@ Mouse modifier:
 - `Mod+/`: jump.
 - `Mod+Shift+/`: jump container.
 - `Mod+Ctrl+/`: jump workspaces.
-- `Mod+Alt+/`: jump floating.
+- `Mod+Super+/`: jump floating.
 - `Mod+,`: scale content -0.05.
 - `Mod+.`: scale content +0.05.
 - `Mod+Ctrl+.`: reset content scale.
@@ -102,8 +107,8 @@ Mouse modifier:
 
 - `Mod+f`: fullscreen.
 - `Mod+Ctrl+f`: fullscreen layout.
-- `Mod+Alt+f`: fullscreen application.
-- `Mod+Ctrl+Alt+f`: fullscreen global.
+- `Mod+Super+f`: fullscreen application.
+- `Mod+Ctrl+Super+f`: fullscreen global.
 - `Mod+y`: focus mode toggle.
 - `Mod+Shift+y`: layout transpose.
 - `Mod+Shift+f`: floating toggle.
@@ -117,13 +122,13 @@ Mouse modifier:
 - `Mod+Ctrl+Insert`: selection reset.
 - `Mod+Shift+Insert`: selection move.
 - `Mod+Ctrl+Shift+Insert`: selection workspace.
-- `Mod+Alt+Insert`: selection to_trail.
+- `Mod+Super+Insert`: selection to_trail.
 
 ## Scratchpad
 
 - `Mod+Shift+z`: move to scratchpad.
 - `Mod+z`: scratchpad show.
-- `Mod+Alt+z`: scratchpad jump.
+- `Mod+Super+z`: scratchpad jump.
 - `Mod+Ctrl+z`: workspace back_and_forth.
 
 ## Modifiers Mode (`modifiers`)
@@ -304,16 +309,16 @@ Mouse modifier:
 
 ## Media and Utility Keys
 
-- `XF86AudioMute`: toggle sink mute (pactl).
-- `XF86AudioLowerVolume`: sink volume -5% (pactl).
-- `XF86AudioRaiseVolume`: sink volume +5% (pactl).
+- `XF86AudioRaiseVolume`: volume +3 (DMS audio).
+- `XF86AudioLowerVolume`: volume -3 (DMS audio).
+- `XF86AudioMute`: toggle sink mute (DMS audio).
 - `XF86AudioMicMute`: toggle source mute (pactl).
 - `XF86AudioPlay/Pause`: play-pause (playerctl).
 - `XF86AudioPrev`: previous (playerctl).
 - `XF86AudioNext`: next (playerctl).
 - `XF86AudioStop`: stop (playerctl).
-- `XF86MonBrightnessDown`: brightness -5% (brightnessctl).
-- `XF86MonBrightnessUp`: brightness +5% (brightnessctl).
+- `XF86MonBrightnessUp`: brightness +5 (DMS brightness).
+- `XF86MonBrightnessDown`: brightness -5 (DMS brightness).
 - `Print`: screenshot (grim).
 
 ## Gestures
