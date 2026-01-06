@@ -1,2 +1,3 @@
 *.iso
 *.iso-CHECKSUM
+.bluebuild-scripts_/
