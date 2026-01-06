@@ -14,7 +14,7 @@ These bindings mirror the upstream Scroll default config (`config.in`).
 - `Mod+z` cycles scratchpad; `Mod+Shift+z` sends a window there.
 - `Mod+Tab` shows overview; `Mod+/` starts jump navigation.
 - `Mod+Shift+c` reloads config; `Mod+Shift+x` exits the session.
-- `Mod+v` opens clipboard history; `Mod+m` toggles process list; `Mod+,` toggles settings.
+- `Mod+v` opens clipboard history; `Mod+m` toggles process list; `Mod+Shift+,` toggles settings.
 
 This image remaps movement keys from arrows to vim-style `h/j/k/l`:
 - `Left -> h`
@@ -43,7 +43,7 @@ Mouse modifier:
 - `Mod+Space`: launcher (`$menu`).
 - `Mod+v`: DMS clipboard toggle.
 - `Mod+m`: DMS process list toggle.
-- `Mod+,`: DMS settings toggle.
+- `Mod+Shift+,`: DMS settings toggle.
 - `Mod+e`: file manager (`$filemanager`).
 - `Mod+Shift+c`: reload config.
 - `Mod+Shift+x`: exit Scroll with confirmation.

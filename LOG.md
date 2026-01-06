@@ -272,6 +272,15 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `README.md`
   - `LOG.md`
 
+## 2026-01-06: Avoid Mod+comma conflict in Scroll config
+
+- Context: `Mod+,` is already used for content scaling.
+- Action: Moved DMS settings toggle to `Mod+Shift+,`.
+- Files changed:
+  - `files/system/etc/skel/.config/scroll/config`
+  - `SCROLL_KEYMAPS.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.

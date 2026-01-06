@@ -140,8 +140,7 @@ animations {
     # DMS helpers
     bindsym $mod+v exec dms ipc call clipboard toggle
     bindsym $mod+m exec dms ipc call processlist focusOrToggle
-    unbindsym $mod+comma
-    bindsym $mod+comma exec dms ipc call settings focusOrToggle
+    bindsym $mod+Shift+comma exec dms ipc call settings focusOrToggle
     
     bindsym $mod+e exec $filemanager
 
