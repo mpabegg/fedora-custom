@@ -43,6 +43,20 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Context: Keep documentation in English for wider reuse.
 - Action: Replaced `AVALIACAO.md` content with English translation.
 
+## 2026-01-06: Remove `ujust` wrapper
+
+- Context: Re-evaluate whether `ujust` is needed; prefer minimal host and simple scripts if required later.
+- Action: Removed the `ujust` wrapper from the image.
+- File changed:
+  - `files/system/usr/bin/ujust`
+
+## 2026-01-06: Document ujust reevaluation note
+
+- Context: Keep a visible reminder in project docs about revisiting ujust later.
+- Action: Added a short reminder section in `README.md`.
+- File changed:
+  - `README.md`
+
 ---
 
 ## Open items / next checks

@@ -41,3 +41,7 @@ These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](ht
 ```bash
 cosign verify --key cosign.pub ghcr.io/mpabegg/fedora-custom
 ```
+
+## Future revisit: ujust
+
+`ujust` was intentionally removed to keep the host minimal. Reevaluate later if a small, focused set of helper tasks is needed (either by reintroducing a minimal justfile or simple bash scripts).

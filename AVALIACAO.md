@@ -1,60 +1,63 @@
-# Avaliacao detalhada do projeto (repo vs descricao)
+# Project Evaluation (repo vs description)
 
-Este documento consolida o estado atual do repo, valida a descricao fornecida e registra gaps/sugestoes. A ideia e que ele sirva como fonte de contexto se a conversa for retomada.
+This document consolidates the current repo state, validates the provided description, and captures gaps/suggestions. The goal is to preserve context if the conversation is resumed later.
 
-## 1) Escopo declarado pelo usuario (resumo)
+## 1) Declared scope (summary)
 
 - Base: Fedora KDE Atomic (rpm-ostree), Wayland default, KDE stock.
-- Host minimalista: sistema base + QoL. Desenvolvimento e tooling em Distrobox.
-- Atualizacoes via rpm-ostree e rollback funcional.
-- Flatpaks system-wide via BlueBuild com Flathub e Fedora remote removido.
-- Servicos no host: 1Password (GUI + CLI) e keyd (Caps Lock -> Escape).
+- Minimal host: base system + QoL. Development and tooling in Distrobox.
+- Updates via rpm-ostree with functional rollback.
+- System-wide Flatpaks via BlueBuild with Flathub and Fedora remote removed.
+- Host services: 1Password (GUI + CLI) and keyd (Caps Lock -> Escape).
 - Shell/CLI QoL via `/etc/profile.d`:
-  - Locale UTF-8, EDITOR/VISUAL, aliases neutros, prompt simples.
-  - PATH do Homebrew configurado (brew nao instalado pelo sistema).
-  - `ujust` estilo Bazzite.
-  - Banner de boas-vindas removido.
-- Metodologia de teste: VM limpa, rebase direto, sem herdar /var, pipeline BlueBuild ok.
-- Fora do escopo (por design): NVIDIA, gamescope/SteamOS, tuning agressivo, tweaks avancados de audio.
-- Proximos objetivos:
+  - UTF-8 locale, EDITOR/VISUAL, neutral aliases, simple prompt.
+  - Homebrew PATH configured (brew not installed by the system).
+  - `ujust` like Bazzite.
+  - Welcome banner removed.
+- Test methodology: clean Fedora Atomic VM, direct rebase, no `/var` inheritance, BlueBuild pipeline healthy.
+- Out of scope (by design): NVIDIA, gamescope/SteamOS, aggressive tuning, advanced audio tweaks.
+- Next goals:
   - xpadneo + udev/firmware.
-  - Sessao alternativa Wayland (ScrollWM + DankMaterialShell) mantendo KDE default.
-  - ISO opcional depois de UX/hardware estabilizar.
+  - Alternative Wayland session (ScrollWM + DankMaterialShell) while keeping KDE default.
+  - ISO generation optional after UX/hardware stabilizes.
 
-## 2) Estado atual do repo (o que esta implementado)
+## 2) Current repo state (what is implemented)
 
-### 2.1 Estrutura geral
+### 2.1 Structure
 
-- `recipes/recipe.yml`: definicao da imagem, base, modulos.
-- `files/system/*`: arquivos copiados para o sistema.
-- `files/scripts/example.sh`: exemplo (nao usado).
-- `cosign.pub`: chave publica para verificacao de assinatura.
-- `README.md`: ainda template do BlueBuild.
+- `recipes/recipe.yml`: image definition, base, modules.
+- `files/system/*`: files copied into the image.
+- `files/scripts/example.sh`: example script (unused).
+- `cosign.pub`: public key for signature verification.
+- `README.md`: still BlueBuild template.
 
-### 2.2 Base da imagem
+### 2.2 Image base
 
-- Base definida em `recipes/recipe.yml`:
+- Base defined in `recipes/recipe.yml`:
   - `base-image: ghcr.io/ublue-os/kinoite-main`
   - `image-version: latest`
-- Implicacao: KDE Atomic, alinhado a `kinoite-main` da uBlue.
+- Implication: KDE Atomic aligned with uBlue `kinoite-main`.
 
-### 2.3 Modulos BlueBuild configurados (ordem de execucao)
+### 2.3 BlueBuild modules configured (execution order)
 
 1) **files**
-   - Copia `files/system/*` para `/` da imagem.
+   - Copies `files/system/*` to `/` in the image.
 
-2) **dnf**
+2) **containerfile**
+   - Copies `/system_files` from `ghcr.io/ublue-os/brew:latest` into the image.
+
+3) **dnf**
    - COPRs: `atim/starship`, `alternateved/keyd`.
-   - Pacotes instalados:
+   - Packages installed:
      - `micro`
      - `starship`
      - `keyd`
      - `1password`
      - `1password-cli`
 
-3) **default-flatpaks** (system)
-   - Flathub adicionado (system scope).
-   - Flatpaks instalados:
+4) **default-flatpaks** (system)
+   - Flathub added (system scope).
+   - Flatpaks installed:
      - `com.brave.Browser`
      - `app.zen_browser.zen`
      - `com.valvesoftware.Steam`
@@ -62,124 +65,128 @@ Este documento consolida o estado atual do repo, valida a descricao fornecida e 
      - `org.videolan.VLC`
      - `com.github.tchx84.Flatseal`
 
-4) **systemd**
-   - `keyd.service` habilitado (system).
+5) **systemd**
+   - Enabled units:
+     - `keyd.service`
+     - `brew-setup.service`
+     - `brew-update.timer`
+     - `brew-upgrade.timer`
 
-5) **signing**
-   - Configuracao de assinatura para imagem assinada.
+6) **signing**
+   - Signing config for signed images.
 
-### 2.4 Arquivos do host (files/system)
+### 2.4 Host files (files/system)
 
-#### `/etc/profile.d` (QoL em shell)
+#### `/etc/profile.d` (shell QoL)
 
 - `files/system/etc/profile.d/10-locale-utf8.sh`
-  - Define `LANG=C.UTF-8` quando `LANG` esta vazio.
+  - Sets `LANG=C.UTF-8` when `LANG` is empty.
 
 - `files/system/etc/profile.d/20-editor-visual.sh`
-  - Seleciona editor em ordem: `nvim`, `vim`, `vi`, `nano`.
-  - Define `EDITOR` e `VISUAL` se nao estiverem setados.
+  - Chooses editor in order: `nvim`, `vim`, `vi`, `nano`.
+  - Sets `EDITOR` and `VISUAL` if unset.
 
 - `files/system/etc/profile.d/30-linuxbrew-path.sh`
-  - Se existir `/home/linuxbrew/.linuxbrew`, adiciona `bin` e `sbin` ao `PATH`.
-  - Nao instala brew; apenas PATH idempotente.
+  - If `/var/home/linuxbrew/.linuxbrew` exists, prepends `bin` and `sbin` to `PATH`.
+  - Does not install brew; only PATH handling.
 
 - `files/system/etc/profile.d/40-host-aliases.sh`
-  - Aliases simples: `ll`, `la`, `l`, `..`, `...`.
+  - Simple aliases: `ll`, `la`, `l`, `..`, `...`.
 
 - `files/system/etc/profile.d/50-host-prompt.sh`
-  - Prompt Bash simples: `\u@\h:\w\$`.
+  - Simple Bash prompt: `\u@\h:\w\$`.
 
 - `files/system/etc/profile.d/90-welcome-banner.sh`
-  - Exibe "Welcome to <hostname>" para shells interativos.
+  - Prints "Welcome to <hostname>" for interactive shells.
 
-#### Outros arquivos
+#### Other files
 
 - `files/system/usr/bin/ujust`
   - Wrapper: `just -f /usr/share/ublue-os/justfile`.
 
 - `files/system/etc/keyd/default.conf`
-  - Config default do keyd:
+  - keyd default config:
     - `capslock = overload(control, esc)`.
     - `102nd = layer(shift)`.
 
 - `files/system/etc/yum.repos.d/1password.repo`
-  - Repo oficial 1Password (stable), com `gpgcheck` e `repo_gpgcheck`.
+  - Official 1Password repo (stable) with `gpgcheck` and `repo_gpgcheck`.
 
-## 3) Validacao da descricao vs repo (convergencias e divergencias)
+## 3) Description validation vs repo (matches and gaps)
 
-### 3.1 Convergencias
+### 3.1 Matches
 
-- **Base KDE Atomic**: consistente com `kinoite-main`.
-- **Flatpaks listados**: Brave, Zen, Steam, ProtonPlus, VLC, Flatseal presentes.
-- **1Password**: repo e pacotes instalados no host.
-- **Keyd**: instalado e `keyd.service` habilitado.
-- **QoL via profile.d**: locale, editor, aliases e prompt simples estao presentes.
-- **ujust**: wrapper equivalente ao Bazzite presente.
+- **KDE Atomic base**: consistent with `kinoite-main`.
+- **Flatpaks list**: Brave, Zen, Steam, ProtonPlus, VLC, Flatseal are present.
+- **1Password**: repo + packages installed on host.
+- **keyd**: installed and `keyd.service` enabled.
+- **QoL via profile.d**: locale, editor, aliases, and simple prompt are present.
+- **ujust**: Bazzite-like wrapper present.
 
-### 3.2 Divergencias ou lacunas
+### 3.2 Gaps or divergences
 
-- **Banner removido**: o repo possui `90-welcome-banner.sh` mostrando banner.
-- **Keyd (Caps Lock -> Esc)**: configurado como `overload(control, esc)`, nao estritamente apenas `Escape`.
-- **Starship**: pacote instalado via COPR, mas voce mencionou prompt simples e sem temas (prompt simples existe, mas starship e um extra nao citado).
-- **Micro**: pacote instalado e nao citado na descricao.
-- **Remocao do remote Fedora (Flatpak)**: nao ha modulo/config explicitando remocao do remote Fedora.
+- **Banner removed**: repo has `90-welcome-banner.sh` printing a banner.
+- **Keyd mapping**: description says "Caps Lock -> Esc" but config uses `overload(control, esc)` and remaps `102nd`.
+- **Starship**: installed via COPR though prompt is configured as simple.
+- **Micro**: installed but not mentioned.
+- **Flatpak Fedora remote removal**: no explicit step in `recipes/recipe.yml`; only Flathub is added.
 
-## 4) Sugestoes e melhorias (com base em Bazzite/WayBlue)
+## 4) Suggestions and improvements (aligned with Bazzite/WayBlue)
 
-Estas sugestoes sao alinhadas ao foco de host limpo, previsivel e compatibilidade.
+These suggestions align with a clean, predictable host and compatibility goals.
 
-### 4.1 Suporte a controles Xbox (Bazzite-like)
+### 4.1 Xbox controller support (Bazzite-like)
 
-- **xpadneo** para Xbox One/Series via Bluetooth.
-- **Firmware e regras udev** (se aplicavel), possivelmente em `files/system/etc/udev/rules.d/`.
-- Avaliar tambem `xone` para dongle USB (se for requisito futuro).
+- **xpadneo** for Xbox One/Series Bluetooth.
+- **Firmware and udev rules** if applicable (likely under `files/system/etc/udev/rules.d/`).
+- Optionally **xone** for USB dongle support if needed later.
 
-### 4.2 Sessao Wayland alternativa (ScrollWM + DankMaterialShell)
+### 4.2 Alternative Wayland session (ScrollWM + DankMaterialShell)
 
-- Objetivo: adicionar uma sessao adicional sem afetar KDE.
-- Abordagem tipica:
-  - Instalar pacotes/artefatos via `dnf` (ou outros modulos).
-  - Criar `.desktop` em `/usr/share/wayland-sessions/` via `files/system`.
-  - Manter KDE como default (nenhuma alteracao no SDDM alem de disponibilizar a sessao).
+- Goal: add an extra session without affecting KDE.
+- Typical approach:
+  - Install required packages via `dnf` (or other modules).
+  - Add `.desktop` in `/usr/share/wayland-sessions/` via `files/system`.
+  - Keep KDE default (no SDDM changes beyond adding a session).
 
 ### 4.3 Distrobox QoL
 
-- Se nao estiver no base, considerar adicionar:
+- If not in the base, consider adding:
   - `distrobox` + `podman`.
-  - `ujust` ou script para criar containers padrao.
-- Mantem o host limpo e delega tooling, alinhado ao objetivo.
+  - `ujust` task or script for standard container creation.
+- Keeps host clean and pushes tooling into containers, aligned with the goal.
 
 ### 4.4 Flatpak hygiene
 
-- Se o requisito for "remover remote Fedora":
-  - Adicionar modulo/etapa especifica no `recipes/recipe.yml` para remover o remote Fedora.
-- Ajustar prioridade do Flathub se preciso.
+- If the requirement is to remove the Fedora remote:
+  - Add an explicit module or script in `recipes/recipe.yml` to remove it.
+- Adjust Flathub priority if needed.
 
-### 4.5 Atualizacoes automaticas (opcional)
+### 4.5 Automatic updates (optional)
 
-- Se desejar comportamento mais "set and forget":
-  - `rpm-ostreed-automatic` com politica conservadora (se isso nao conflitar com controle manual).
+- If you want a more "set and forget" behavior:
+  - Use `rpm-ostreed-automatic` with a conservative policy (if it does not conflict with manual control).
 
-### 4.6 Documentacao
+### 4.6 Documentation
 
-- `README.md` ainda e template; atualizar para refletir:
-  - Objetivos (host limpo + Distrobox).
-  - Escopo atual e fora do escopo.
-  - Instrucoes de rebase/rollback e validacao.
-  - Lista de pacotes/Flatpaks e rationale.
+- `README.md` is still the BlueBuild template; update it to reflect:
+  - Goals (clean host + Distrobox).
+  - Current scope and out-of-scope items.
+  - Rebase/rollback instructions and validation steps.
+  - Package/Flatpak lists and rationale.
 
-## 5) Itens a confirmar/decidir
+## 5) Items to confirm/decide
 
-- **Banner**: deve ser removido mesmo? Se sim, remover `90-welcome-banner.sh`.
-- **Keyd**: deseja realmente `Caps Lock -> Esc` puro ou prefere `overload(control, esc)`?
-- **Starship**: manter ou remover do host?
-- **Micro**: manter ou remover?
-- **Remocao do remote Fedora**: confirmar requisito e forma preferida.
-- **xpadneo**: apenas Bluetooth ou tambem suporte a dongle (`xone`)?
-- **Sessao alternativa**: quais pacotes exatos de ScrollWM + DankMaterialShell (repos, build, etc).
+- **Banner**: should it be removed? If yes, remove `90-welcome-banner.sh`.
+- **Keyd**: do you want pure `Caps Lock -> Esc` or keep `overload(control, esc)`?
+- **Starship**: keep or drop from host?
+- **Micro**: keep or drop?
+- **Remove Fedora remote**: confirm requirement and preferred method.
+- **xpadneo**: Bluetooth only or include dongle support (`xone`)?
+- **Alternative session**: specific packages/repos for ScrollWM + DankMaterialShell.
 
-## 6) Observacoes finais
+## 6) Final notes
 
-- O repo mostra uma base consistente com a proposta (KDE Atomic + host enxuto + QoL via profile.d).
-- Existem pequenos desvios entre a descricao e o que esta commitado.
-- As proximas features podem ser adicionadas incrementalmente, mantendo o foco de previsibilidade.
+- The repo is consistent with the goal (KDE Atomic + lean host + QoL via profile.d).
+- There are small mismatches between the description and what is committed.
+- Next features can be added incrementally while keeping the system predictable.
