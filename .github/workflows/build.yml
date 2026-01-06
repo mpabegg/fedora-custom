@@ -5,10 +5,14 @@ on:
         "00 06 * * *" # build at 06:00 UTC every day
         # (20 minutes after last ublue images start building)
   push:
+    branches:
+      - docs/base-change-list
     paths-ignore: # don't rebuild if only documentation has changed
       - "**.md"
 
   pull_request:
+    branches:
+      - docs/base-change-list
   workflow_dispatch: # allow manually triggering builds
 concurrency:
   # only run one build at a time
@@ -27,8 +31,7 @@ jobs:
       matrix:
         recipe:
           # !! Add your recipes here
-          - kinoite.yml
-          - silverblue.yml
+          - cosmic.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
