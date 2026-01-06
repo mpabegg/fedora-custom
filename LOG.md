@@ -173,6 +173,13 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `README.md`
 
+## 2026-01-06: Document VM validation checklist
+
+- Context: Keep a lightweight, repeatable validation flow for clean-VM testing.
+- Action: Added a VM validation checklist to the README.
+- Files changed:
+  - `README.md`
+
 ---
 
 ## Open items / next checks

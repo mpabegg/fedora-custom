@@ -103,3 +103,15 @@ Audio
 Xbox controllers (Bluetooth)
 - Currently relies on kernel `xpad`.
 - If Bluetooth support is insufficient, consider `xpadneo` via a COPR.
+
+## VM validation checklist
+
+- Rebase unsigned then signed image; verify rollback works.
+- Confirm rpm-ostree check-only behavior (notifications, no auto-apply).
+- Confirm Flatpak remotes: Flathub enabled, Fedora disabled.
+- Confirm Flatpak update timers are enabled.
+- Verify Homebrew works after first boot (`brew --version`).
+- Validate keyd behavior matches config.
+- Test Distrobox: `distrobox list` and `distrobox assemble` with `/etc/distrobox/distrobox.ini`.
+- Launch `pavucontrol` and `qpwgraph`.
+- Verify controllers are usable with `steam-devices` rules.
