@@ -37,6 +37,30 @@ modules:
         - pavucontrol
         - qpwgraph
         - steam-devices
+
+  - type: dnf
+    repos:
+      copr:
+        - scrollwm/packages
+        - avengemedia/dms
+        - avengemedia/danklinux
+    install:
+      install-weak-deps: false
+      packages:
+        - scroll
+        - dms
+        - quickshell
+        - dgop
+        - accountsservice
+        - fira-code-fonts
+        - rsms-inter-fonts
+        - material-symbols-fonts
+        - cliphist
+        - wl-clipboard
+        - matugen
+        - qt6ct
+        - danksearch
+        - xdg-desktop-portal-wlr
   
   - type: default-flatpaks
     configurations:

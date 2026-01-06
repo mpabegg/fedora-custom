@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Scroll + DMS
+Comment=Scroll compositor with DankMaterialShell
+Exec=/usr/bin/scroll-dms-session
+Type=Application
+DesktopNames=scroll

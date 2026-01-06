@@ -173,6 +173,22 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `README.md`
 
+## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
+
+- Context: Provide an optional modern WM + shell session alongside KDE.
+- Actions:
+  - Added ScrollWM and DMS via COPR repos with weak deps disabled.
+  - Installed minimal add-ons for core DMS functionality.
+  - Added a dedicated session entry and wrapper script.
+  - Added Scroll portal config and `xdg-desktop-portal-wlr`.
+  - Documented the session in the README.
+- Files changed:
+  - `recipes/recipe.yml`
+  - `files/system/usr/bin/scroll-dms-session`
+  - `files/system/usr/share/wayland-sessions/scroll-dms.desktop`
+  - `files/system/usr/share/xdg-desktop-portal/scroll-portals.conf`
+  - `README.md`
+
 ## 2026-01-06: Document VM validation checklist
 
 - Context: Keep a lightweight, repeatable validation flow for clean-VM testing.

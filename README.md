@@ -104,6 +104,16 @@ Xbox controllers (Bluetooth)
 - Currently relies on kernel `xpad`.
 - If Bluetooth support is insufficient, consider `xpadneo` via a COPR.
 
+## ScrollWM + DankMaterialShell (optional session)
+
+An additional Wayland session is provided: **Scroll + DMS**. KDE remains the default.
+
+Included components (lean but full-featured):
+- `scroll` compositor (Copr: `scrollwm/packages`)
+- `dms` + `quickshell` + `dgop` (Copr: `avengemedia/dms` + `avengemedia/danklinux`)
+- Core DMS add-ons: `cliphist`, `wl-clipboard`, `matugen`, `qt6ct`, `danksearch`
+- Screen sharing portal: `xdg-desktop-portal-wlr`
+
 ## VM validation checklist
 
 - Rebase unsigned then signed image; verify rollback works.
