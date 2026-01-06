@@ -1,4 +1,4 @@
-BREW_PREFIX="/home/linuxbrew/.linuxbrew"
+BREW_PREFIX="/var/home/linuxbrew/.linuxbrew"
 
 if [ -d "$BREW_PREFIX" ]; then
   case ":$PATH:" in
