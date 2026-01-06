@@ -93,6 +93,26 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `recipes/recipe.yml`
 
+## 2026-01-06: Gaming QoL (light)
+
+- Context: Improve controller/device permissions without adding heavy hardware stacks.
+- Actions:
+  - Added `steam-devices`.
+  - Documented the light gaming QoL approach in the README.
+- Files changed:
+  - `recipes/recipe.yml`
+  - `README.md`
+
+## 2026-01-06: Defer xpadneo (use kernel xpad)
+
+- Context: Akmods images do not currently ship xpadneo; avoid fragile packaging.
+- Actions:
+  - Removed the akmods-based xpadneo install steps.
+  - Added a README note to revisit xpadneo if Bluetooth support is insufficient.
+- Files changed:
+  - `recipes/recipe.yml`
+  - `README.md`
+
 ## 2026-01-06: Fix DistroShelf Flatpak ID
 
 - Context: Use the correct Flathub app ID for DistroShelf.

@@ -57,3 +57,11 @@ If you need lower latency for a DAW session, prefer per-app or user-level PipeWi
 ## Flatpak remotes (light)
 
 Flathub is enabled system-wide. Fedora Flatpak remotes are disabled to keep a single, predictable source.
+
+## Gaming QoL (light)
+
+This image includes `steam-devices` udev rules for better controller/device permissions. If you need broader hardware rules later, consider adding `ublue-os-udev-rules` (as done by WayBlue).
+
+## Xbox controllers (Bluetooth)
+
+For now we rely on the kernel `xpad` driver. If Bluetooth support is insufficient, consider adding `xpadneo` via a COPR (requires extra packaging decisions).
