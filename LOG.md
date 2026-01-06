@@ -292,6 +292,19 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `README.md`
   - `LOG.md`
 
+## 2026-01-06: Make Mod+f maximize instead of fullscreen
+
+- Context: Prefer a maximize action on the primary `Mod+f` binding.
+- Actions:
+  - Set `Mod+f` to `toggle_size this 1.0 1.0`.
+  - Mapped fullscreen to `Mod+Ctrl+f`.
+  - Updated keymap cheatsheet and workflow guide.
+- Files changed:
+  - `files/system/etc/skel/.config/scroll/config`
+  - `SCROLL_KEYMAPS.md`
+  - `SCROLL_WORKFLOW.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.

@@ -301,9 +301,9 @@ bindsym $mod+Shift+backslash mode "wssplit"
 #
 # Layout stuff:
 #
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
-    bindsym $mod+Ctrl+f fullscreen layout
+    # Maximize vs fullscreen
+    bindsym $mod+f toggle_size this 1.0 1.0
+    bindsym $mod+Ctrl+f fullscreen
     bindsym $mod+$super+f fullscreen application
     bindsym $mod+Ctrl+$super+f fullscreen global
 

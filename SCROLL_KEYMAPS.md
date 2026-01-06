@@ -8,7 +8,7 @@ These bindings mirror the upstream Scroll default config (`config.in`).
 - `Mod+Return` opens the terminal; `Mod+Space` opens the launcher.
 - `Mod+h/j/k/l` moves focus; `Mod+Ctrl+h/j/k/l` moves windows.
 - `Mod+1..0` switches workspaces; `Mod+Shift+1..0` sends windows to them.
-- `Mod+f` is fullscreen; `Mod+Shift+f` toggles floating.
+- `Mod+f` maximizes; `Mod+Ctrl+f` is fullscreen.
 - `Mod+Shift+r` enters resize mode; `Mod+Ctrl+r` enters floating move/resize mode.
 - `Mod+t` toggles size for the current window; `Mod+Shift+t` for the active set.
 - `Mod+z` cycles scratchpad; `Mod+Shift+z` sends a window there.
@@ -105,8 +105,8 @@ Mouse modifier:
 
 ## Layout and Floating
 
-- `Mod+f`: fullscreen.
-- `Mod+Ctrl+f`: fullscreen layout.
+- `Mod+f`: maximize (toggle_size this 1.0 1.0).
+- `Mod+Ctrl+f`: fullscreen.
 - `Mod+Super+f`: fullscreen application.
 - `Mod+Ctrl+Super+f`: fullscreen global.
 - `Mod+y`: focus mode toggle.

@@ -36,7 +36,7 @@ If that feels good, you already know 80% of daily navigation.
 - `Mod+Tab`: overview
 - `Mod+/`: jump
 - `Mod+Shift+r`: resize mode
-- `Mod+f`: fullscreen
+- `Mod+f`: maximize
 - `Mod+Shift+f`: floating toggle
 - `Mod+z` / `Mod+Shift+z`: scratchpad show/send
 
