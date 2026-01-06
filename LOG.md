@@ -298,6 +298,7 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Actions:
   - Added separate recipes for KDE and GNOME bases.
   - Consolidated shared modules into `recipes/modules.yml`.
+  - Updated `recipes/modules.yml` to match the working Wayblue include style.
   - Updated the build workflow matrix and docs to reference both recipes.
   - Removed the single legacy recipe file.
 - Files changed:
