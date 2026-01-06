@@ -114,6 +114,8 @@ Included components (lean but full-featured):
 - Core DMS add-ons: `cliphist`, `wl-clipboard`, `matugen`, `qt6ct`, `danksearch`
 - Screen sharing portal: `xdg-desktop-portal-wlr`
 
+See `SCROLL_KEYMAPS.md` for the default ScrollWM keybindings.
+
 ## VM validation checklist
 
 - Rebase unsigned then signed image; verify rollback works.

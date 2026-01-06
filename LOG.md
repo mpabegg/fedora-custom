@@ -173,6 +173,17 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `README.md`
 
+## 2026-01-06: Add ScrollWM keymap cheatsheet
+
+- Context: Provide a self-contained reference for Scroll's default bindings.
+- Actions:
+  - Added a keymap cheatsheet based on Scroll's upstream `config.in`.
+  - Linked the cheatsheet from the README.
+- Files changed:
+  - `SCROLL_KEYMAPS.md`
+  - `README.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.
