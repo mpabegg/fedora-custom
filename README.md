@@ -114,7 +114,8 @@ Included components (lean but full-featured):
 - Core DMS add-ons: `cliphist`, `wl-clipboard`, `matugen`, `qt6ct`, `danksearch`
 - Screen sharing portal: `xdg-desktop-portal-wlr`
 
-See `SCROLL_KEYMAPS.md` for the default ScrollWM keybindings.
+This image ships a Scroll config in `/etc/skel` that remaps movement to vim keys (`h/j/k/l`).
+See `SCROLL_KEYMAPS.md` for the ScrollWM keybindings.
 
 ## VM validation checklist
 

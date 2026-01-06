@@ -179,9 +179,22 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Actions:
   - Added a keymap cheatsheet based on Scroll's upstream `config.in`.
   - Linked the cheatsheet from the README.
+  - Added a plain-English summary of the keymaps.
 - Files changed:
   - `SCROLL_KEYMAPS.md`
   - `README.md`
+  - `LOG.md`
+
+## 2026-01-06: Remap Scroll movement keys to vim-style hjkl
+
+- Context: Prefer vim-style navigation over arrow keys in Scroll.
+- Actions:
+  - Added a Scroll config to `/etc/skel` that remaps movement to `h/j/k/l`.
+  - Documented the remap in the README and keymap cheatsheet.
+- Files changed:
+  - `files/system/etc/skel/.config/scroll/config`
+  - `README.md`
+  - `SCROLL_KEYMAPS.md`
   - `LOG.md`
 
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)

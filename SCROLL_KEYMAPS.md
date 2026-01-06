@@ -2,9 +2,28 @@
 
 These bindings mirror the upstream Scroll default config (`config.in`).
 
+## Plain English Overview
+
+- `Mod` (Super) is your main "do stuff" key.
+- `Mod+Return` opens the terminal; `Mod+r` opens the launcher.
+- `Mod+h/j/k/l` moves focus; `Mod+Ctrl+h/j/k/l` moves windows.
+- `Mod+1..0` switches workspaces; `Mod+Shift+1..0` sends windows to them.
+- `Mod+f` is fullscreen; `Mod+Shift+f` toggles floating.
+- `Mod+Shift+r` enters resize mode; `Mod+Ctrl+r` enters floating move/resize mode.
+- `Mod+t` toggles size for the current window; `Mod+Shift+t` for the active set.
+- `Mod+z` cycles scratchpad; `Mod+Shift+z` sends a window there.
+- `Mod+Tab` shows overview; `Mod+/` starts jump navigation.
+- `Mod+Shift+c` reloads config; `Mod+Shift+x` exits the session.
+
+This image remaps movement keys from arrows to vim-style `h/j/k/l`:
+- `Left -> h`
+- `Down -> j`
+- `Up -> k`
+- `Right -> l`
+
 Variables used in the defaults:
 - `Mod` is `Mod4` (Super/Windows key).
-- `$left/$down/$up/$right` are the arrow keys.
+- `$left/$down/$up/$right` are the arrow keys (remapped to `h/j/k/l` in this image).
 - `$term` is `kitty`.
 - `$menu` is `wmenu-run`.
 - `$filemanager` is not set by default (set it if you want `Mod+e`).
