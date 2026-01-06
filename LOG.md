@@ -141,6 +141,29 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `recipes/recipe.yml`
   - `README.md`
 
+## 2026-01-06: Flatpak update timers (light)
+
+- Context: Enable automatic Flatpak updates without extra tooling.
+- Actions:
+  - Added a one-time systemd unit to enable system and user Flatpak update timers.
+  - Noted the timers in the README.
+- Files changed:
+  - `files/system/usr/lib/systemd/system/flatpak-update-timers.service`
+  - `recipes/recipe.yml`
+  - `README.md`
+
+## 2026-01-06: rpm-ostree updates (check-only)
+
+- Context: Notify about updates without auto-applying them.
+- Actions:
+  - Enabled `rpm-ostreed-automatic.timer`.
+  - Set `AutomaticUpdatePolicy=check`.
+  - Documented the policy in the README.
+- Files changed:
+  - `files/system/etc/rpm-ostreed.conf.d/10-automatic-updates.conf`
+  - `recipes/recipe.yml`
+  - `README.md`
+
 ---
 
 ## Open items / next checks

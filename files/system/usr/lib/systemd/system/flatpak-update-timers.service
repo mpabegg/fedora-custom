@@ -1,0 +1,13 @@
+[Unit]
+Description=Enable Flatpak update timers (system and user)
+After=multi-user.target
+ConditionPathExists=!/var/lib/flatpak/.custom-flatpak-updates
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl enable flatpak-system-update.timer
+ExecStart=/usr/bin/systemctl --global enable flatpak-user-update.timer
+ExecStart=/usr/bin/touch /var/lib/flatpak/.custom-flatpak-updates
+
+[Install]
+WantedBy=multi-user.target

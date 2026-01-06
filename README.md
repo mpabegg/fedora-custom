@@ -58,6 +58,12 @@ If you need lower latency for a DAW session, prefer per-app or user-level PipeWi
 
 Flathub is enabled system-wide. Fedora Flatpak remotes are disabled to keep a single, predictable source.
 
+Flatpak update timers are enabled for both system and user scopes.
+
+## rpm-ostree updates (check-only)
+
+Automatic update checks are enabled (`AutomaticUpdatePolicy=check`). The system will notify about updates but will not apply them automatically.
+
 ## Gaming QoL (light)
 
 This image includes `steam-devices` udev rules for better controller/device permissions. If you need broader hardware rules later, consider adding `ublue-os-udev-rules` (as done by WayBlue).
