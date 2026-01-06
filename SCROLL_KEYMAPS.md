@@ -4,8 +4,8 @@ These bindings mirror the upstream Scroll default config (`config.in`).
 
 ## Plain English Overview
 
-- `Mod` (Super) is your main "do stuff" key.
-- `Mod+Return` opens the terminal; `Mod+r` opens the launcher.
+- `Mod` (Alt) is your main "do stuff" key.
+- `Mod+Return` opens the terminal; `Mod+Space` opens the launcher.
 - `Mod+h/j/k/l` moves focus; `Mod+Ctrl+h/j/k/l` moves windows.
 - `Mod+1..0` switches workspaces; `Mod+Shift+1..0` sends windows to them.
 - `Mod+f` is fullscreen; `Mod+Shift+f` toggles floating.
@@ -22,10 +22,10 @@ This image remaps movement keys from arrows to vim-style `h/j/k/l`:
 - `Right -> l`
 
 Variables used in the defaults:
-- `Mod` is `Mod4` (Super/Windows key).
+- `Mod` is `Mod1` (Alt).
 - `$left/$down/$up/$right` are the arrow keys (remapped to `h/j/k/l` in this image).
-- `$term` is `kitty`.
-- `$menu` is `wmenu-run`.
+- `$term` is `konsole`.
+- `$menu` is `dms ipc call spotlight toggle`.
 - `$filemanager` is not set by default (set it if you want `Mod+e`).
 
 Mouse modifier:
@@ -38,7 +38,7 @@ Mouse modifier:
 - `Mod+Backspace`: kill focused window.
 - `Mod+Shift+Backspace`: kill unfocused window.
 - `Mod+Ctrl+Backspace`: kill all windows.
-- `Mod+r`: launcher (`$menu`).
+- `Mod+Space`: launcher (`$menu`).
 - `Mod+e`: file manager (`$filemanager`).
 - `Mod+Shift+c`: reload config.
 - `Mod+Shift+x`: exit Scroll with confirmation.

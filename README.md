@@ -115,6 +115,7 @@ Included components (lean but full-featured):
 - Screen sharing portal: `xdg-desktop-portal-wlr`
 
 This image ships a Scroll config in `/etc/skel` that remaps movement to vim keys (`h/j/k/l`).
+It also switches the Scroll modifier to `Alt` and maps `Alt+Space` to the DMS launcher.
 See `SCROLL_KEYMAPS.md` for the ScrollWM keybindings.
 
 ## VM validation checklist

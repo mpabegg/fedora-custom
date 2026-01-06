@@ -197,6 +197,20 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `SCROLL_KEYMAPS.md`
   - `LOG.md`
 
+## 2026-01-06: Scroll mod/launcher defaults (Alt + DMS spotlight)
+
+- Context: Align Scroll defaults with DMS and preferred modifiers.
+- Actions:
+  - Switched the Scroll modifier to `Alt` (`Mod1`).
+  - Mapped `Alt+Space` to toggle the DMS spotlight launcher.
+  - Set the default terminal to `konsole`.
+  - Updated README and keymap cheatsheet to reflect the new defaults.
+- Files changed:
+  - `files/system/etc/skel/.config/scroll/config`
+  - `SCROLL_KEYMAPS.md`
+  - `README.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.
