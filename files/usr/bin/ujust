@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec /usr/bin/just -f /usr/share/ublue-os/justfile "$@"
