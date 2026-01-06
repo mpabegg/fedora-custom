@@ -256,6 +256,22 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `SCROLL_KEYMAPS.md`
   - `LOG.md`
 
+## 2026-01-06: Use the default Scroll session with ~/.config integration
+
+- Context: Simplify to a single Scroll session and keep all integration under user config.
+- Actions:
+  - Removed the custom Scroll+DMS session entry and wrapper.
+  - Moved DMS startup, clipboard watcher, DMS IPC binds, and bar hiding into the skel config.
+  - Ensure DMS starts with `QT_QPA_PLATFORM=wayland`.
+  - Updated README to describe the default-session integration.
+- Files changed:
+  - `files/system/etc/skel/.config/scroll/config`
+  - `files/system/usr/share/wayland-sessions/scroll-dms.desktop`
+  - `files/system/usr/bin/scroll-dms-session`
+  - `files/system/etc/scroll/scroll-dms.conf`
+  - `README.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.
@@ -296,4 +312,3 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Decide on keyd mapping (pure `Caps Lock -> Esc` vs `overload(control, esc)`).
 - Decide whether to keep `starship` and `micro` on the host.
 - Implement Xbox controller support (xpadneo + udev/firmware).
-- Add alternate Wayland session (ScrollWM + DankMaterialShell) without affecting KDE.

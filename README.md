@@ -104,9 +104,7 @@ Xbox controllers (Bluetooth)
 - Currently relies on kernel `xpad`.
 - If Bluetooth support is insufficient, consider `xpadneo` via a COPR.
 
-## ScrollWM + DankMaterialShell (optional session)
-
-An additional Wayland session is provided: **Scroll + DMS**. KDE remains the default.
+## ScrollWM + DankMaterialShell (default Scroll session)
 
 Included components (lean but full-featured):
 - `scroll` compositor (Copr: `scrollwm/packages`)
@@ -114,9 +112,12 @@ Included components (lean but full-featured):
 - Core DMS add-ons: `cliphist`, `wl-clipboard`, `matugen`, `qt6ct`, `danksearch`
 - Screen sharing portal: `xdg-desktop-portal-wlr`
 
-This image ships a Scroll config in `/etc/skel` that remaps movement to vim keys (`h/j/k/l`).
-It also switches the Scroll modifier to `Alt` and maps `Alt+Space` to the DMS launcher.
-The Scroll + DMS session uses `/etc/scroll/scroll-dms.conf` to start DMS, enable clipboard history, bind DMS IPC shortcuts, and hide Scroll's bar.
+This image ships a Scroll config in `/etc/skel` that:
+- Remaps movement to vim keys (`h/j/k/l`).
+- Switches the Scroll modifier to `Alt`.
+- Maps `Alt+Space` to the DMS launcher.
+- Starts DMS and the clipboard watcher on login.
+- Binds DMS IPC shortcuts and hides Scroll's bar.
 See `SCROLL_KEYMAPS.md` for the ScrollWM keybindings.
 
 ## VM validation checklist

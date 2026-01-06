@@ -24,6 +24,11 @@ set $term konsole
 # Your preferred application launcher
 set $menu dms ipc call spotlight toggle
 
+### Session startup
+#
+exec env QT_QPA_PLATFORM=wayland dms run --session
+exec wl-paste --watch cliphist store
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/scroll/)
@@ -131,6 +136,12 @@ animations {
 
     # Start your launcher
     bindsym $mod+space exec $menu
+
+    # DMS helpers
+    bindsym $mod+v exec dms ipc call clipboard toggle
+    bindsym $mod+m exec dms ipc call processlist focusOrToggle
+    unbindsym $mod+comma
+    bindsym $mod+comma exec dms ipc call settings focusOrToggle
     
     bindsym $mod+e exec $filemanager
 
@@ -602,11 +613,11 @@ bindsym $mod+g mode "spaces"
 #
 # Utilities:
 #
-    # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust volume via DMS
+    bindsym XF86AudioRaiseVolume exec dms ipc call audio increment 3
+    bindsym XF86AudioLowerVolume exec dms ipc call audio decrement 3
+    bindsym XF86AudioMute exec dms ipc call audio mute
+    bindsym XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 
     # Special keys to control media via playerctl
     bindsym --locked XF86AudioPlay exec playerctl play-pause
@@ -615,9 +626,9 @@ bindsym $mod+g mode "spaces"
     bindsym --locked XF86AudioNext exec playerctl next
     bindsym --locked XF86AudioStop exec playerctl stop
 
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special keys to adjust brightness via DMS
+    bindsym XF86MonBrightnessUp exec dms ipc call brightness increment 5
+    bindsym XF86MonBrightnessDown exec dms ipc call brightness decrement 5
 
     # Special key to take a screenshot with grim
     bindsym Print exec grim
@@ -642,6 +653,7 @@ bindgesture swipe:4:up scale_workspace overview
 #
 # Read `man 5 scroll-bar` for more information about this section.
 bar {
+    mode invisible
     position top
 
     # When the status_command prints a new line to stdout, scrollbar updates.
