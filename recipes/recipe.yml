@@ -35,7 +35,7 @@ modules:
         - 1password
         - 1password-cli
         - distrobox
-        - xpadneo
+        - xpadneo-kmod
         - pavucontrol
         - qpwgraph
   
