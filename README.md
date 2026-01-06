@@ -118,7 +118,7 @@ This image ships a Scroll config in `/etc/skel` that:
 - Maps `Alt+Space` to the DMS launcher.
 - Starts DMS and the clipboard watcher on login.
 - Binds DMS IPC shortcuts and hides Scroll's bar.
-See `SCROLL_KEYMAPS.md` for the ScrollWM keybindings.
+See `SCROLL_KEYMAPS.md` for the ScrollWM keybindings and `SCROLL_WORKFLOW.md` for a quick workflow guide.
 
 ## VM validation checklist
 

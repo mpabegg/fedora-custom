@@ -281,6 +281,17 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `SCROLL_KEYMAPS.md`
   - `LOG.md`
 
+## 2026-01-06: Add Scroll workflow guide
+
+- Context: Provide a practical, first‑session guide for using Scroll.
+- Actions:
+  - Added a short workflow guide with key patterns and concepts.
+  - Linked it from the README.
+- Files changed:
+  - `SCROLL_WORKFLOW.md`
+  - `README.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.
