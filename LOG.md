@@ -211,6 +211,20 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `README.md`
   - `LOG.md`
 
+## 2026-01-06: Start DMS from the Scroll session config
+
+- Context: Ensure DMS starts reliably after Scroll is up, and hide Scroll's bar.
+- Actions:
+  - Added `/etc/scroll/scroll-dms.conf` for the combined session.
+  - Start DMS from that config and set the bar to invisible.
+  - Updated the session wrapper to use the DMS config.
+  - Documented the new config in the README.
+- Files changed:
+  - `files/system/etc/scroll/scroll-dms.conf`
+  - `files/system/usr/bin/scroll-dms-session`
+  - `README.md`
+  - `LOG.md`
+
 ## 2026-01-06: Add ScrollWM + DMS session (lean full-featured)
 
 - Context: Provide an optional modern WM + shell session alongside KDE.
