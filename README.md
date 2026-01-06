@@ -53,3 +53,7 @@ This image keeps PipeWire/WirePlumber defaults for stability and Hi-Fi playback.
 - `qpwgraph` for DAW-friendly patchbay routing.
 
 If you need lower latency for a DAW session, prefer per-app or user-level PipeWire/JACK configuration instead of system-wide tuning.
+
+## Flatpak remotes (light)
+
+Flathub is enabled system-wide. Fedora Flatpak remotes are disabled to keep a single, predictable source.

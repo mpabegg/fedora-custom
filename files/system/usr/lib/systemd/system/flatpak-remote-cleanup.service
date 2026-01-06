@@ -1,0 +1,15 @@
+[Unit]
+Description=Ensure Flathub is enabled and Fedora remotes are disabled
+After=flatpak-system-helper.service
+ConditionPathExists=!/var/lib/flatpak/.custom-flatpak-setup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+ExecStart=/usr/bin/flatpak remote-modify --system --enable flathub
+ExecStart=/usr/bin/flatpak remote-delete --system fedora
+ExecStart=/usr/bin/flatpak remote-delete --system fedora-testing
+ExecStart=/usr/bin/touch /var/lib/flatpak/.custom-flatpak-setup
+
+[Install]
+WantedBy=multi-user.target

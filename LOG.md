@@ -94,6 +94,17 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `recipes/recipe.yml`
   - `README.md`
 
+## 2026-01-06: Flatpak remotes (light)
+
+- Context: Keep a single, predictable Flatpak source aligned with the project goals.
+- Actions:
+  - Added a one-time systemd unit to enable Flathub and disable Fedora remotes.
+  - Documented the remotes policy in the README.
+- Files changed:
+  - `files/system/usr/lib/systemd/system/flatpak-remote-cleanup.service`
+  - `recipes/recipe.yml`
+  - `README.md`
+
 ---
 
 ## Open items / next checks

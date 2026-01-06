@@ -61,6 +61,7 @@ modules:
         - brew-setup.service
         - brew-update.timer
         - brew-upgrade.timer
+        - flatpak-remote-cleanup.service
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
       
