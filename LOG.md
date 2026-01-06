@@ -84,6 +84,15 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `recipes/recipe.yml`
 
+## 2026-01-06: Xbox controller support via ublue akmods (Bluetooth only)
+
+- Context: Align with ublue-os/main approach for maximum compatibility.
+- Actions:
+  - Copy akmods RPMs from `ghcr.io/ublue-os/akmods:main-43`.
+  - Install `ublue-os-akmods-addons` and `xpadneo` kmod RPMs directly.
+- Files changed:
+  - `recipes/recipe.yml`
+
 ## 2026-01-06: Fix DistroShelf Flatpak ID
 
 - Context: Use the correct Flathub app ID for DistroShelf.

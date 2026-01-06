@@ -21,6 +21,12 @@ modules:
     snippets:
       - COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
 
+  - type: containerfile
+    snippets:
+      - COPY --from=ghcr.io/ublue-os/akmods:main-43 /rpms /tmp/rpms
+      - RUN rpm -q ublue-os-akmods-addons || dnf install -y /tmp/rpms/ublue-os/ublue-os-akmods-addons*.rpm
+      - RUN rpm -q xpadneo-kmod || dnf install -y /tmp/rpms/kmods/*xpadneo*.rpm
+
   - type: dnf
     repos:
       copr:
