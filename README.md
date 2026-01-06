@@ -1,6 +1,10 @@
 # fedora-custom &nbsp; [![bluebuild build badge](https://github.com/mpabegg/fedora-custom/actions/workflows/build.yml/badge.svg)](https://github.com/mpabegg/fedora-custom/actions/workflows/build.yml)
 
-Personal Fedora KDE Atomic image built with BlueBuild. The host stays lean and predictable, while development and tooling live in Distrobox.
+Personal Fedora Atomic images built with BlueBuild. The host stays lean and predictable, while development and tooling live in Distrobox.
+
+Build variants:
+- `fedora-custom-kde` (KDE Atomic base)
+- `fedora-custom-gnome` (Silverblue/GNOME base)
 
 Inspired by the uBlue ecosystem, especially Bazzite and WayBlue.
 
@@ -77,7 +81,7 @@ To rebase an existing atomic Fedora installation to the latest build:
   systemctl reboot
   ```
 
-The `latest` tag always points to the latest build for the Fedora version specified in `recipes/recipe.yml`.
+The `latest` tag for each image points to the latest build for the Fedora version specified in `recipes/kinoite.yml` and `recipes/silverblue.yml`.
 
 ## ISO
 

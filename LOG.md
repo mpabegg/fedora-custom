@@ -292,6 +292,25 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `README.md`
   - `LOG.md`
 
+## 2026-01-06: Split build into Kinoite and Silverblue recipes
+
+- Context: Build the same customization on two Atomic bases.
+- Actions:
+  - Added separate recipes for KDE and GNOME bases.
+  - Consolidated shared modules into `recipes/modules.yml`.
+  - Updated the build workflow matrix and docs to reference both recipes.
+  - Removed the single legacy recipe file.
+- Files changed:
+  - `recipes/kinoite.yml`
+  - `recipes/silverblue.yml`
+  - `recipes/modules.yml`
+  - `recipes/recipe.yml`
+  - `.github/workflows/build.yml`
+  - `README.md`
+  - `AVALIACAO.md`
+  - `files/scripts/example.sh`
+  - `LOG.md`
+
 ## 2026-01-06: Make Mod+f maximize instead of fullscreen
 
 - Context: Prefer a maximize action on the primary `Mod+f` binding.

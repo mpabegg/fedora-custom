@@ -1,0 +1,80 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
+
+- type: files
+  files:
+    - source: system
+      destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+- type: containerfile
+  snippets:
+    - COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
+
+- type: dnf
+  repos:
+    copr:
+      - atim/starship
+      - alternateved/keyd
+  install:
+    packages:
+      - micro
+      - starship
+      - keyd
+      - 1password
+      - 1password-cli
+      - distrobox
+      - pavucontrol
+      - qpwgraph
+      - steam-devices
+
+- type: dnf
+  repos:
+    copr:
+      - scrollwm/packages
+      - avengemedia/dms
+      - avengemedia/danklinux
+  install:
+    install-weak-deps: false
+    packages:
+      - scroll
+      - dms
+      - quickshell
+      - dgop
+      - accountsservice
+      - fira-code-fonts
+      - rsms-inter-fonts
+      - material-symbols-fonts
+      - cliphist
+      - wl-clipboard
+      - matugen
+      - qt6ct
+      - danksearch
+      - xdg-desktop-portal-wlr
+
+- type: default-flatpaks
+  configurations:
+    - scope: system
+      notify: false
+      repo:
+        title: Flathub (system)
+      install:
+        - com.brave.Browser
+        - app.zen_browser.zen
+        - com.valvesoftware.Steam
+        - com.vysp3r.ProtonPlus
+        - org.videolan.VLC
+        - com.github.tchx84.Flatseal
+        - com.ranfdev.DistroShelf
+
+- type: systemd
+  system:
+    enabled:
+      - keyd.service
+      - brew-setup.service
+      - brew-update.timer
+      - brew-upgrade.timer
+      - flatpak-remote-cleanup.service
+      - flatpak-update-timers.service
+      - rpm-ostreed-automatic.timer
+
+- type: signing # this sets up the proper policy & signing files for signed images to work fully

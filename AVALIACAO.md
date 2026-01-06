@@ -25,7 +25,8 @@ This document consolidates the current repo state, validates the provided descri
 
 ### 2.1 Structure
 
-- `recipes/recipe.yml`: image definition, base, modules.
+- `recipes/kinoite.yml`: image definition, base, modules (Kinoite).
+- `recipes/silverblue.yml`: image definition, base, modules (Silverblue).
 - `files/system/*`: files copied into the image.
 - `files/scripts/example.sh`: example script (unused).
 - `cosign.pub`: public key for signature verification.
@@ -33,7 +34,9 @@ This document consolidates the current repo state, validates the provided descri
 
 ### 2.2 Image base
 
-- Base defined in `recipes/recipe.yml`:
+- Base defined in `recipes/kinoite.yml` and `recipes/silverblue.yml`:
+  - `ghcr.io/ublue-os/kinoite-main`
+  - `ghcr.io/ublue-os/silverblue-main`
   - `base-image: ghcr.io/ublue-os/kinoite-main`
   - `image-version: latest`
 - Implication: KDE Atomic aligned with uBlue `kinoite-main`.
@@ -129,7 +132,7 @@ This document consolidates the current repo state, validates the provided descri
 - **Keyd mapping**: description says "Caps Lock -> Esc" but config uses `overload(control, esc)` and remaps `102nd`.
 - **Starship**: installed via COPR though prompt is configured as simple.
 - **Micro**: installed but not mentioned.
-- **Flatpak Fedora remote removal**: no explicit step in `recipes/recipe.yml`; only Flathub is added.
+- **Flatpak Fedora remote removal**: no explicit step in `recipes/kinoite.yml` or `recipes/silverblue.yml`; only Flathub is added.
 
 ## 4) Suggestions and improvements (aligned with Bazzite/WayBlue)
 
@@ -159,7 +162,7 @@ These suggestions align with a clean, predictable host and compatibility goals.
 ### 4.4 Flatpak hygiene
 
 - If the requirement is to remove the Fedora remote:
-  - Add an explicit module or script in `recipes/recipe.yml` to remove it.
+  - Add an explicit module or script in `recipes/kinoite.yml` and `recipes/silverblue.yml` to remove it.
 - Adjust Flathub priority if needed.
 
 ### 4.5 Automatic updates (optional)
