@@ -84,6 +84,16 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `recipes/recipe.yml`
 
+## 2026-01-06: Audio tools (minimal)
+
+- Context: Keep audio stable for gaming/Hi-Fi while supporting DAW routing.
+- Actions:
+  - Added `pavucontrol` and `qpwgraph` packages.
+  - Documented the light audio approach in the README.
+- Files changed:
+  - `recipes/recipe.yml`
+  - `README.md`
+
 ---
 
 ## Open items / next checks

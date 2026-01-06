@@ -36,6 +36,8 @@ modules:
         - 1password-cli
         - distrobox
         - xpadneo
+        - pavucontrol
+        - qpwgraph
   
   - type: default-flatpaks
     configurations:

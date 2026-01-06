@@ -45,3 +45,11 @@ cosign verify --key cosign.pub ghcr.io/mpabegg/fedora-custom
 ## Future revisit: ujust
 
 `ujust` was intentionally removed to keep the host minimal. Reevaluate later if a small, focused set of helper tasks is needed (either by reintroducing a minimal justfile or simple bash scripts).
+
+## Audio (light approach)
+
+This image keeps PipeWire/WirePlumber defaults for stability and Hi-Fi playback. Minimal tools are included for routing and troubleshooting:
+- `pavucontrol` for volume and per-app routing.
+- `qpwgraph` for DAW-friendly patchbay routing.
+
+If you need lower latency for a DAW session, prefer per-app or user-level PipeWire/JACK configuration instead of system-wide tuning.
