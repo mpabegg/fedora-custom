@@ -164,6 +164,15 @@ This log captures decisions and steps taken, in chronological order. Each entry 
   - `recipes/recipe.yml`
   - `README.md`
 
+## 2026-01-06: README refresh
+
+- Context: Replace template text with the current image goals, scope, and contents.
+- Actions:
+  - Updated the README to describe base image, included packages/flatpaks, update policy, and notes.
+  - Added an explicit nod to the uBlue ecosystem (Bazzite/WayBlue).
+- Files changed:
+  - `README.md`
+
 ---
 
 ## Open items / next checks

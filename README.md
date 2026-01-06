@@ -1,73 +1,105 @@
 # fedora-custom &nbsp; [![bluebuild build badge](https://github.com/mpabegg/fedora-custom/actions/workflows/build.yml/badge.svg)](https://github.com/mpabegg/fedora-custom/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+Personal Fedora KDE Atomic image built with BlueBuild. The host stays lean and predictable, while development and tooling live in Distrobox.
 
-After setup, it is recommended you update this README to describe your custom image.
+Inspired by the uBlue ecosystem, especially Bazzite and WayBlue.
+
+## Goals
+
+- Clean host, minimal layering, predictable updates.
+- KDE stock experience (Wayland default).
+- Gaming via Flatpak, development via Distrobox.
+
+## What is included
+
+Base
+- Fedora KDE Atomic (`kinoite-main`).
+- Manual rpm-ostree rebase/rollback supported.
+
+Host packages (RPM)
+- `1password` + `1password-cli`
+- `keyd` (Caps Lock to Esc via `default.conf`)
+- `distrobox`
+- `pavucontrol`, `qpwgraph` (audio routing tools)
+- `steam-devices` (game device udev rules)
+
+Homebrew
+- Preinstalled via `ghcr.io/ublue-os/brew` with setup timers.
+- PATH handling in `/etc/profile.d`.
+
+Flatpaks (system)
+- Browsers: Brave, Zen Browser
+- Gaming: Steam, ProtonPlus
+- Media: VLC
+- Utilities: Flatseal, DistroShelf
+
+Distrobox presets
+- `/etc/distrobox/distrobox.ini` includes Fedora/Arch toolbox plus vanilla Fedora/Arch images.
+
+## Out of scope (intentional)
+
+- NVIDIA
+- SteamOS/Deck mode (gamescope-session)
+- Aggressive performance tuning
+- Advanced audio tuning
+
+## Updates
+
+rpm-ostree
+- Automatic checks enabled (`AutomaticUpdatePolicy=check`).
+- Updates are notified but not auto-applied.
+
+Flatpak
+- Flathub enabled system-wide; Fedora remotes disabled.
+- System and user Flatpak update timers enabled.
 
 ## Installation
 
-> [!WARNING]  
+> [!WARNING]
 > [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
 
 To rebase an existing atomic Fedora installation to the latest build:
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
+- First rebase to the unsigned image:
   ```
   rpm-ostree rebase ostree-unverified-registry:ghcr.io/mpabegg/fedora-custom:latest
   ```
-- Reboot to complete the rebase:
+- Reboot:
   ```
   systemctl reboot
   ```
-- Then rebase to the signed image, like so:
+- Rebase to the signed image:
   ```
   rpm-ostree rebase ostree-image-signed:docker://ghcr.io/mpabegg/fedora-custom:latest
   ```
-- Reboot again to complete the installation
+- Reboot again:
   ```
   systemctl reboot
   ```
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+The `latest` tag always points to the latest build for the Fedora version specified in `recipes/recipe.yml`.
 
 ## ISO
 
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+If building on Fedora Atomic, you can generate an offline ISO with the instructions [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs are large and typically need external hosting.
 
 ## Verification
 
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading `cosign.pub` and running:
 
 ```bash
 cosign verify --key cosign.pub ghcr.io/mpabegg/fedora-custom
 ```
 
-## Future revisit: ujust
+## Notes for future changes
 
-`ujust` was intentionally removed to keep the host minimal. Reevaluate later if a small, focused set of helper tasks is needed (either by reintroducing a minimal justfile or simple bash scripts).
+ujust
+- Removed to keep the host minimal. Reintroduce only if a small, focused set of helpers is needed.
 
-## Audio (light approach)
+Audio
+- PipeWire/WirePlumber defaults are kept for stability and Hi-Fi playback.
+- Use `pavucontrol` and `qpwgraph` for routing.
 
-This image keeps PipeWire/WirePlumber defaults for stability and Hi-Fi playback. Minimal tools are included for routing and troubleshooting:
-- `pavucontrol` for volume and per-app routing.
-- `qpwgraph` for DAW-friendly patchbay routing.
-
-If you need lower latency for a DAW session, prefer per-app or user-level PipeWire/JACK configuration instead of system-wide tuning.
-
-## Flatpak remotes (light)
-
-Flathub is enabled system-wide. Fedora Flatpak remotes are disabled to keep a single, predictable source.
-
-Flatpak update timers are enabled for both system and user scopes.
-
-## rpm-ostree updates (check-only)
-
-Automatic update checks are enabled (`AutomaticUpdatePolicy=check`). The system will notify about updates but will not apply them automatically.
-
-## Gaming QoL (light)
-
-This image includes `steam-devices` udev rules for better controller/device permissions. If you need broader hardware rules later, consider adding `ublue-os-udev-rules` (as done by WayBlue).
-
-## Xbox controllers (Bluetooth)
-
-For now we rely on the kernel `xpad` driver. If Bluetooth support is insufficient, consider adding `xpadneo` via a COPR (requires extra packaging decisions).
+Xbox controllers (Bluetooth)
+- Currently relies on kernel `xpad`.
+- If Bluetooth support is insufficient, consider `xpadneo` via a COPR.
