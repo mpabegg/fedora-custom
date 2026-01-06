@@ -77,6 +77,13 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `recipes/recipe.yml`
 
+## 2026-01-06: Temporarily remove xpadneo for build debugging
+
+- Context: DNF transaction failed with a sysusers conflict; isolate whether xpadneo is involved.
+- Action: Removed `xpadneo-kmod` and the xpadneo COPR from the recipe.
+- Files changed:
+  - `recipes/recipe.yml`
+
 ## 2026-01-06: Fix DistroShelf Flatpak ID
 
 - Context: Use the correct Flathub app ID for DistroShelf.
