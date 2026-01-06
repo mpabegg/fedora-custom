@@ -180,6 +180,13 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - Files changed:
   - `README.md`
 
+## 2026-01-06: Add feature matrix document
+
+- Context: Provide a consolidated comparison of uBlue Main, Bazzite, WayBlue, and this image.
+- Action: Added `FEATURES.md` with a best-effort feature matrix.
+- Files changed:
+  - `FEATURES.md`
+
 ---
 
 ## Open items / next checks
