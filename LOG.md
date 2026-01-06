@@ -57,6 +57,17 @@ This log captures decisions and steps taken, in chronological order. Each entry 
 - File changed:
   - `README.md`
 
+## 2026-01-06: Distrobox baseline (light integration)
+
+- Context: `kinoite-main` does not include Distrobox; prefer a light setup vs full Bazzite integration.
+- Actions:
+  - Added `distrobox` to host packages.
+  - Added a minimal `/etc/distrobox/distrobox.ini` with Fedora/Arch toolbox + vanilla images.
+  - Added DistroShelf Flatpak for container management UI.
+- Files changed:
+  - `recipes/recipe.yml`
+  - `files/system/etc/distrobox/distrobox.ini`
+
 ---
 
 ## Open items / next checks
